@@ -1,3 +1,4 @@
+import os
 import time
 import unittest
 
@@ -25,6 +26,9 @@ class SelectionScatter(Scatter):
                          **kwargs)
 
 
+@unittest.skipIf(
+        os.name == 'nt', "GH Actions test on windows cannot open the view."
+)
 class HighchartTest(WidgetTest):
     def test_svg_is_svg(self):
         scatter = Scatter()
